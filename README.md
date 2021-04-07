@@ -5,8 +5,8 @@ _El proyecto tiene como fin crear un control de acceso a las oficinas de una emp
 - Isaura Flores
 ### Grupo 1: 
 
-- **Marcos Ibañez** - [marcscript](https://github.com/villanuevand) 
-- Matias Berni
+- **Marcos Ibañez** - [MarcScript](https://github.com/MarcScript) 
+- **Matias Berni** - [Bernimo](https://github.com/Bernimo) 
 - Franco Maidana
 - Sebastián Chaparro
 ### Entrega 09/04/2021
