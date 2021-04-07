@@ -1,12 +1,15 @@
 # Lecturas RFID entrada
 _El proyecto tiene como fin crear un control de acceso a las oficinas de una empresa mediante la lectura de tarjetas RFID que serán previamente entregadas a los funcionarios para permitir su entrada al predio._
-
-<h2>Grupo: </h2>
+### Docentes:
+- Ricardo Fabio
+- Isaura Flores
+### Grupo 1: 
 
 - **Marcos Ibañez** - [marcscript](https://github.com/villanuevand) 
 - Matias Berni
 - Franco Maidana
 - Sebastián Chaparro
+### Entrega 09/04/2021
 
 ### Construido con 🛠️
 * [Python](https://www.python.org/downloads/windows/) - Lenguaje de programación para interacción con la BD.
