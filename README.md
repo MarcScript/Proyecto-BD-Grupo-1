@@ -8,7 +8,7 @@ _El proyecto tiene como fin crear un control de acceso a las oficinas de una emp
 - **Marcos Ibañez** - [MarcScript](https://github.com/MarcScript) 
 - **Matias Berni** - [Bernimo](https://github.com/Bernimo) 
 - **Franco Maidana** - [FrancoMaidana](https://github.com/FrancoMaidana)
-- Sebastián Chaparro
+- **Sebastián Chaparro** - [sebaschapa](https://github.com/sebaschapa)
 ### Entrega 09/04/2021
 
 ### Construido con 🛠️
