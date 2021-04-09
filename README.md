@@ -12,7 +12,7 @@ _El proyecto tiene como fin crear un control de acceso a las oficinas de una emp
 ### Entrega 09/04/2021
 
 ### Construido con 🛠️
-* [Python](https://www.python.org/downloads/windows/) - Lenguaje de programación para interacción con la BD.
+* [Python](https://www.python.org/downloads/windows/) - Lenguaje de programación para interacción con la BD y sensores.
 * [Raspbian](https://www.raspberrypi.org/software/operating-systems/) - Sistema Operativo del Raspberry.
 * [PostgreSQL](https://www.postgresql.org/) - Gestor de la BD.
 
