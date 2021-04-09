@@ -15,7 +15,7 @@ El funcionamiendo del codigo es el siguiente:<br />
 El codigo primeramente importa una directiva para que el terminal interprete que se trata del script de python, seguidamente se importan la librerias:<br />
 - GPIO<br />
 - mcrf522<br />
-- SimpleMCRF522<br />
+- SimpleMCRF522<br /><br />
 La libreria GPIO es utilizada para manejar la interaccion de los pines del Raspberry Pi con el modulo RFID. Las librerias mcrf522 y SimpleMCRF522 son utilizadas para las funciones de comunicacion del RFID con el arduino.<br /><br />
 Seguidamente el codigo crea el objeto "usuario" al que utilizara para almacenar los parametros de lectura del tag.<br /><br />
 Luego el bloque try del script se encarga de ejecutar la secuencia de lectura para capturar la informacion que rebica del tag en caso de que éste se presente, y sino, se encarga de manejar las excepciones que puedan ocurrir.<br /><br />
