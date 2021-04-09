@@ -1,4 +1,4 @@
-# Lecturas RFID entrada
+# Lectura RFID entrada
 _El proyecto tiene como fin crear un control de acceso a las oficinas de una empresa mediante la lectura de tarjetas RFID que serán previamente entregadas a los funcionarios para permitir su entrada al predio._
 ### Docentes:
 - Ricardo Fabio
