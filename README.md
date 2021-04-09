@@ -13,9 +13,9 @@ _El proyecto tiene como fin crear un control de acceso a las oficinas de una emp
 Se presentan el código básico de interacción con el sensor RFID en conjunto con el repositorio del proyecto en Github.
 El funcionamiendo del codigo es el siguiente:<br />
 El codigo primeramente importa una directiva para que el terminal interprete que se trata del script de python, seguidamente se importan la librerias:<br />
--GPIO<br />
--mcrf522<br />
--SimpleMCRF522<br />
+- GPIO<br />
+- mcrf522<br />
+- SimpleMCRF522<br />
 La libreria GPIO es utilizada para manejar la interaccion de los pines del Raspberry Pi con el modulo RFID. Las librerias mcrf522 y SimpleMCRF522 son utilizadas para las funciones de comunicacion del RFID con el arduino.<br />
 Seguidamente el codigo crea el objeto "usuario" al que utilizara para almacenar los parametros de lectura del tag.<br />
 Luego el bloque try del script se encarga de ejecutar la secuencia de lectura para capturar la informacion que rebica del tag en caso de que éste se presente, y sino, se encarga de manejar las excepciones que puedan ocurrir.<br />
