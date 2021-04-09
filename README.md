@@ -10,7 +10,7 @@ _El proyecto tiene como fin crear un control de acceso a las oficinas de una emp
 - **Franco Maidana** - [FrancoMaidana](https://github.com/FrancoMaidana)
 - **Sebastián Chaparro** - [sebaschapa](https://github.com/sebaschapa)
 ### Entrega 09/04/2021
-
+Se presentan el código básico de interacción con el sensor RFID en conjunto con el repositorio del proyecto en Github.
 ### Construido con 🛠️
 * [Python](https://www.python.org/downloads/windows/) - Lenguaje de programación para interacción con la BD y sensores.
 * [Raspbian](https://www.raspberrypi.org/software/operating-systems/) - Sistema Operativo del Raspberry.
