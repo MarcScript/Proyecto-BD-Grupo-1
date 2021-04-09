@@ -12,7 +12,7 @@ _El proyecto tiene como fin crear un control de acceso a las oficinas de una emp
 ### Entrega 09/04/2021
 Se presentan el código básico de interacción con el sensor RFID en conjunto con el repositorio del proyecto en Github.
 El funcionamiendo del codigo es el siguiente:
-El codigo primeramente importa una directiva para que el terminal interprete que se trata del script de python, seguidamente se importan la librerias:
+El codigo primeramente importa una directiva para que el terminal interprete que se trata del script de python, seguidamente se importan la librerias:\n
 -GPIO
 -mcrf522
 -SimpleMCRF522
