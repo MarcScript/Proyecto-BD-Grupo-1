@@ -1,66 +1,69 @@
-----------------------------------------------------------------------------------
--- Company: Universidad Católica
--- Engineer: Vicente González
--- 
--- Create Date:    14:28:41 06/14/2017 
--- Design Name: 
--- Module Name:    decodificador - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+import mysql.connector
+from datetime import datetime
+import RPi.GPIO as GPIO
+from mfrc522 import SimpleMFRC522
+#Variables
+exit = "0"
+#Entradas de sensores y tiempo
+time = datetime.now()
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+hora_ent = time.strftime("%H:%M:%S")
+#Lectura RFID
+reader = SimpleMFRC522()
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
+mydb=mysql.connector.connect(
+    host="localhost",
+    user="root",   
+    passwd="123456",
+    database="empleados"
+    )
+cursor=mydb.cursor()
 
-entity decodificador is
-    Port ( ent       : in  STD_LOGIC_VECTOR (31 downto 0);
-           csMem     : out  STD_LOGIC;
-           csParPort : out  STD_LOGIC;
-           csLCD     : out  STD_LOGIC;
---			  csSwitches: out std_logic;
-		   csRand	 : out std_logic;
-			  csEntrada : out STD_LOGIC);
-end decodificador;
+def imprimirEmpleado():
+    sql="SELECT * FROM empleado"
+    cursor.execute(sql)
+    result=cursor.fetchall()
+    for row in result:
+            print("Cedula: ", row[0])
+            print("Nombre: ", row[1])
+            print("Apellido: ", row[2])
+            print("Correo: ", row[3])
+            print("UUID: ", row[4])
+            print("\n")
+def imprimirRegistro():
+    sql="SELECT * FROM registro_ent"
+    cursor.execute(sql)
+    result=cursor.fetchall()
+    for row in result:
+            print("id_registro: ", row[0])
+            print("hora_ent: ", row[1])
+            print("cedula: ", row[2])
+            print("\n")
+def ingresarEmpleado():
+   nombre = input("Ingrese su nombre\n")
+   apellido = input("Ingrese su apellido\n")
+   cedula = input("Ingrese su cedula\n")
+   correo = input("Ingrese su correo\n")
+   UU_ID = input("Ingrese su codigo UUID\n")
+   sql="INSERT INTO empleado(cedula,nombre,apellido,correo,UU_ID) VALUES ('{}','{}','{}','{}','{}')".format(cedula,nombre,apellido,correo,UU_ID)
+   return sql
 
-architecture Behavioral of decodificador is
-
-  begin
-	-- memoria
-	csMem     <= '1' when ent(31 downto 16) = X"1001" else
-	             '0';
-	
-	-- Puerto paralelo de salida
-	csParPort <= '1' when ent = X"FFFF8000" else
-	             '0';
-
-	-- controlador del LCD
-	csLCD     <= '1' when ent = X"FFFFC000" else
-	             '0';
-	
-	-- habilitador de lectura de las llaves
-	csEntrada <= '1' when ent = X"FFFFD000" else
-					 '0';
-	-- habilitador de rand
-	csRand<= '1' when ent= X"FFFFE000" else
-	0;
-	
-   
-end Behavioral;
-
+while exit == "0":
+    try:
+        time = datetime.now()
+        hora_ent = time.strftime("%H:%M:%S")
+        UU_ID = reader.read_id()
+        #print(id)
+        print(UU_ID)
+        sql = "SELECT cedula FROM empleado WHERE UU_ID = '{}'".format(UU_ID)
+        cursor.execute(sql)
+        result=cursor.fetchall()
+        print(result)
+        for row in result:
+            sql="INSERT INTO registro_ent(hora_ent,cedula) VALUES ('{}','{}')".format(hora_ent,row[0])
+        cursor.execute(sql)
+        mydb.commit()
+        imprimirRegistro()
+    finally:
+        GPIO.cleanup()
+mydb.close()
