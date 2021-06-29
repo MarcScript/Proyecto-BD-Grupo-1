@@ -13,7 +13,10 @@ _El proyecto tiene como fin crear un control de acceso a las oficinas de una emp
 Se presenta el código de interacción de sensores en conjunto con la interfaz gráfica y la base de datos. Actualmente el sistema es capaz de registrar la entrada del sensor RFID para marcar la entrada de algún empleado mostrando la hora de entrada en caso de ser la primera marcación, y un mensaje de aviso en caso de que ya haya marcado previamente. A su vez estos registros se guardan en la base de datos alojada dentro del raspberry, donde somos capaces de crear, actualizar, leer y eliminar sobre ella.
 Para la interfaz gráfica se utilizó la librería de Tkinter, la cual es una librería para crear interfaces gráficas simples con Python con un enfoque orientado a objetos. Para realizar operaciones con la base de datos se implementó la librería de Python llamada mysql-connector, la misma nos permite crear una bd, ejecutar consultas y querys con el Raspberry.
 
-![alt text](interfaz.png)
+<p align="center">
+  <img src="interfaz.png" width="350" title="hover text">
+</p>
+
 ### Entrega 09/04/2021
 Se presentan el código básico de interacción con el sensor RFID en conjunto con el repositorio del proyecto en Github.
 El funcionamiendo del codigo es el siguiente:<br />
