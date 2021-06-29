@@ -14,7 +14,7 @@ Se presenta el código de interacción de sensores en conjunto con la interfaz g
 Para la interfaz gráfica se utilizó la librería de Tkinter, la cual es una librería para crear interfaces gráficas simples con Python con un enfoque orientado a objetos. Para realizar operaciones con la base de datos se implementó la librería de Python llamada mysql-connector, la misma nos permite crear una bd, ejecutar consultas y querys con el Raspberry.
 
 <p align="center">
-  <img src="Imagenes/interfaz.png" width="350" title="hover text">
+  <img src="Imagenes/interfaz.png" width="350" title="Interfaz de usuario">
 </p>
 
 ### Entrega 09/04/2021
@@ -30,6 +30,10 @@ Luego el bloque try del script se encarga de ejecutar la secuencia de lectura pa
 La lectura del objeto usuario se guarda en la variable UUID y se imprime.<br /><br />
 La instruccion "finally" se encarga de manejar que la situacion de la secuencia posterior de codigo se ejecute por defecto, ocurra o no la excepcion del bloque try.<br /><br />
 Finalmente se limpian el registro de entradas/salidas de por la instruccion GPIO.cleanup() para prevenir posibles errores que se ocasionen por la ejecucion de otros scripts.<br /><br />
+### Hardware utilizado🛠️
+* [Raspberry Pi](https://www.amazon.com/-/es/Frambuesa-Pi-Modelo-Junta-3B/dp/B07P4LSDYV/ref=sr_1_4_mod_primary_new?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=Raspberry+pi+3b%2B&qid=1624988167&s=electronics&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sr=1-4/) - Raspberry Pi 3B+.
+* [Sensor RFID](https://www.amazon.com/-/es/NA-M%C3%B3dulo-SunFounder-para-Arduino/dp/B07KGBJ9VG/ref=sr_1_3?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2NPZ33YGO5KDS&dchild=1&keywords=rfid+mfrc522&qid=1624988209&sprefix=RFID+mfrc%2Celectronics%2C314&sr=8-3) - RFID Sensor MFRC522.
+
 
 ### Construido con 🛠️
 * [Python](https://www.python.org/downloads/windows/) - Lenguaje de programación para interacción con la BD y sensores.
