@@ -25,6 +25,7 @@ Luego el bloque try del script se encarga de ejecutar la secuencia de lectura pa
 La lectura del objeto usuario se guarda en la variable UUID y se imprime.<br /><br />
 La instruccion "finally" se encarga de manejar que la situacion de la secuencia posterior de codigo se ejecute por defecto, ocurra o no la excepcion del bloque try.<br /><br />
 Finalmente se limpian el registro de entradas/salidas de por la instruccion GPIO.cleanup() para prevenir posibles errores que se ocasionen por la ejecucion de otros scripts.<br /><br />
+![alt text](interfaz.png)
 ### Construido con 🛠️
 * [Python](https://www.python.org/downloads/windows/) - Lenguaje de programación para interacción con la BD y sensores.
 * [Tkinter](https://docs.python.org/3/library/tkinter.html) - Framework de Python para la implementación de interfaces gráficas.
