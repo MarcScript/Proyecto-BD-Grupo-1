@@ -14,7 +14,7 @@ Se presenta el código de interacción de sensores en conjunto con la interfaz g
 Para la interfaz gráfica se utilizó la librería de Tkinter, la cual es una librería para crear interfaces gráficas simples con Python con un enfoque orientado a objetos. Para realizar operaciones con la base de datos se implementó la librería de Python llamada mysql-connector, la misma nos permite crear una bd, ejecutar consultas y querys con el Raspberry.
 
 <p align="center">
-  <img src="interfaz.png" width="350" title="hover text">
+  <img src="Imagenes/interfaz.png" width="350" title="hover text">
 </p>
 
 ### Entrega 09/04/2021
