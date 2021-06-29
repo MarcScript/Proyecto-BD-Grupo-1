@@ -27,42 +27,40 @@ mydb=mysql.connector.connect(
 cursor=mydb.cursor()
 #Inicializamos
 
-# Entradas de sensores y tiempo
-#time = datetime.now()
-#time_old = time - timedelta(seconds=3)
-#hora_ent = time.strftime("%H:%M:%S")
-# Clase App
-
-
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
         height = 500
-        witdh = 500
+        witdh = 600
         self.geometry("{}x{}".format(height, witdh))
         self.title("Interfaz de marcación de entrada de EMPRESA S.A")
         self.resizable(width=False, height=False)
         ImpReg = Button(self, text="Imprimir Registro", command=imprimirRegistro,
-                        width=40, height=5, font="Times 12 italic bold")
+                        width=35, height=4, font="Times 12 italic bold")
 
         ImpReg.place(x=height/6, y=300+k)
         regEntrada = Label(self, text=" ")
         regEntrada.place(x=height/6, y=int(k/3))
 
         AgEmp = Button(self, text="Agregar Empleado", command=AgregarEmpleado,
-                       width=40, height=5, font="Times 12 italic bold")
+                       width=35, height=4, font="Times 12 italic bold")
         AgEmp.place(x=height/6, y=50+k)
 
         ListEmp = Button(self, text="Registro de Empleados", command=listarEmpleados,
-                         width=40, height=5, font="Times 12 italic bold")
+                         width=35, height=4, font="Times 12 italic bold")
         ListEmp.place(x=height/6, y=175+k)
+        
+        DelEmp = Button(self, text="Eliminar Empleado", command=EliminarEmpleado,
+                         width=35, height=4, font="Times 12 italic bold")
+        DelEmp.place(x=height/6, y=425+k)
+        
         self.times()
         self.leerSensor()
     def times(self):
         clock=Label(self,font=("times",50,"bold"))
         clock.grid(row=2,column=1,pady=25,padx=100)
         current_time=time.strftime("%H:%M:%S") 
-        clock.config(text=current_time,bg="black",fg="green",font="Arial 50 bold")
+        clock.config(text=current_time,fg="green",font="Arial 50 bold")
         clock.after(200,self.times)
         clock.after(5000,self.leerSensor)
     def leerSensor(self):
@@ -125,6 +123,8 @@ def consultar(sql):
 def listarEmpleados():
 
     top = Toplevel()
+    #top.geometry("900x200")
+    top.title('Registro de empleados')
 
     list_emp = ttk.Treeview(top, column=(
         "c1", "c2", "c3", "c4", "c5"), show='headings')
@@ -155,17 +155,47 @@ def listarEmpleados():
         list_emp.insert("", END, values=row)
     list_emp.pack()
     top.title('Registro de empleados')
-
+def EliminarEmpleado():
+    def del_emp():
+        sql="SELECT * FROM `empleado` WHERE `cedula`={}".format(ced.get())
+        result=consultar(sql)
+        aux=0
+        for row in result:
+            aux= row[0]
+        print(aux)
+        if aux == 0:
+            messagebox.showerror("Fatal Error", "No se ha encontrado el empleado")
+        else:
+            sql="DELETE FROM `empleado` WHERE cedula='{}'".format(ced.get())
+            cursor.execute(sql)
+            mydb.commit()
+            messagebox.showinfo("Info","Se ha eliminado el empleado")
+            
+        ced.delete(0, END)
+        #mydb.close()
+        
+    top = Toplevel()
+    top.geometry("300x150")
+    top.title('Eliminar empleado')
+    ced_lab = Label(top, text="Cédula:")
+    ced_lab.place(x=20, y=20)
+    ced = Entry(top, width=20)
+    ced.place(x=100, y=20)
+    enviar = Button(top, text="Eliminar", command=del_emp)
+    enviar.place(x=180, y=70)
+    
 
 def AgregarEmpleado():
     def clear_text():
-        #sql="INSERT INTO tarjeta(UU_ID) VALUES ('{}')".format(UUID)
-        # cursor.execute(sql)
-        # mydb.commit()
-        # print(UUID)
-        #sql="INSERT INTO empleado(cedula,nombre,apellido,correo,UU_ID) VALUES ('{}','{}','{}','{}','{}')".format(ced,nom,ap,correo,UUID)
-        # cursor.execute(sql)
-        # mydb.commit()
+        
+        sql="INSERT INTO tarjeta(UU_ID) VALUES ('{}')".format(UUID.get())
+        cursor.execute(sql)
+        mydb.commit()
+        print(UUID)
+        sql="INSERT INTO empleado(cedula,nombre,apellido,correo,UU_ID) VALUES ("'{}'",'{}','{}','{}','{}')".format(ced.get(),nom.get(),ap.get(),correo.get(),UUID.get())
+
+        cursor.execute(sql)
+        mydb.commit()
         result = consultar("SELECT * FROM empleado")
         for row in result:
             print("Cedula: ", row[0])
@@ -174,36 +204,38 @@ def AgregarEmpleado():
             print("Correo: ", row[3])
             print("UU_ID: ", row[4])
             print("\n")
+            
         ap.delete(0, END)
         ced.delete(0, END)
         nom.delete(0, END)
         UUID.delete(0, END)
         correo.delete(0, END)
+        messagebox.showinfo("Info","Registro exitoso")
     top = Toplevel()
-    top.geometry("500x500")
+    top.geometry("400x400")
     top.title('Agregar empleado')
     ced_lab = Label(top, text="Cédula:")
     ced_lab.place(x=20, y=20)
-    ced = Entry(top, width=10)
+    ced = Entry(top, width=30)
     ced.place(x=100, y=20)
     nom_lab = Label(top, text="Nombre:")
     nom_lab.place(x=20, y=80)
-    nom = Entry(top, width=20)
+    nom = Entry(top, width=30)
     nom.place(x=100, y=80)
     ap_lab = Label(top, text="Apellido:")
     ap_lab.place(x=20, y=140)
-    ap = Entry(top, width=20)
+    ap = Entry(top, width=30)
     ap.place(x=100, y=140)
     correo_lab = Label(top, text="Correo:")
     correo_lab.place(x=20, y=200)
-    correo = Entry(top, width=40)
+    correo = Entry(top, width=30)
     correo.place(x=100, y=200)
     UUID_lab = Label(top, text="UU_ID:")
     UUID_lab.place(x=20, y=260)
     UUID = Entry(top, width=30)
     UUID.place(x=100, y=260)
     enviar = Button(top, text="Enviar", command=clear_text)
-    enviar.place(x=150, y=320)
+    enviar.place(x=170, y=320)
 
 
 def imprimirRegistro():
